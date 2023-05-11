@@ -21,6 +21,7 @@ namespace 学习Csharp
         }
     }
 
+
     class Person : IWalk
     {
         public string Name { get; set; }
@@ -33,6 +34,10 @@ namespace 学习Csharp
         }
         public void SayHello()
         {
+            int TypeCast(int id)
+            {
+                return id++;
+            }
             Console.WriteLine(Name);
         }
     }
