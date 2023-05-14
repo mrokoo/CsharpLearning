@@ -1,59 +1,84 @@
-﻿using UserC;
-
-namespace 学习Csharp
+﻿namespace 学习Csharp
 {
     internal class Program
     {
 
-        static void Main(string[] args)
+        enum Direction
+        {
+            Left,
+            Right,
+            Up,
+            Down
+        }
+        static void Main()
         {
 
-            Console.WriteLine("dsf");
-            Console.WriteLine("Hello, World!");
-            Console.WriteLine("Hello, World!");
-            var p = new Person("bob22", 12);
-            p.SayHello();
-            var u1 = new User("bob", "112233@qq.com", "123344")
-            {
-                Coke = "Boke"
-            };
-            Console.WriteLine(u1.Name);
+            var a = new Angle(1, 2, 3);
+            object b = a;
+            //a.Degrees = 123;
+            Console.WriteLine(b.Equals(a));
         }
     }
 
-
-    class Person : IWalk
+    public class Person
     {
-        public string Name { get; set; }
-        public int Id { get; set; }
+        public string Name { get; set; } = "bob";
 
-        public Person(string name, int id)
+        static public void SayHello(string name)
         {
-            Name = name;
-            Id = id;
+            Console.WriteLine("Hello World!" + name);
+
         }
-        public void SayHello()
+
+        static public void CheckName()
         {
-            int TypeCast(int id)
-            {
-                return id++;
-            }
-            Console.WriteLine(Name);
+            Console.WriteLine("OK");
         }
     }
 
-    class Student : Person
+    struct Angle
     {
-        public string Gender { get; set; }
-
-        public Student(string name, int id, string gender) : base(name, id)
+        public Angle(int degrees, int minutes, int seconds)
         {
-            Gender = gender;
+            Degrees = degrees;
+            Minutes = minutes;
+            Seconds = seconds;
+        }
+
+
+        public int Degrees { get; set; }
+        public int Minutes { get; }
+        public int Seconds { get; }
+
+
+#pragma warning disable
+        public Angle Move(int degrees, int minutes, int seconds)
+        {
+            return new Angle(degrees, minutes, seconds);
         }
     }
 
-    interface IWalk
+    readonly struct Date
     {
-        void SayHello();
+        public int A { get; }
+        public bool IsNot { get; }
+
+        //public string Motto { get; }
+        public Date()
+        {
+
+        }
+    }
+
+    class Cat
+    {
+        public bool Gender;
+        public string ID { get; set; }
+        public int Age { get; set; }
+
+        public Cat(string id)
+        {
+            ID = id;
+        }
     }
 }
